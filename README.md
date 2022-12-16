@@ -7,7 +7,7 @@
 ## 1. Sign up for Azure portal
 
 ## 2. Create a new virtual machine and log in via ssh
-Exple : Open your cmd ant type : ssh Machine_Name@Public-IP-address
+Exple : Open your cmd and type : ssh Your_Machine_Name@Public-IP-address
 
 
 ## 3. Install Node/NPM
