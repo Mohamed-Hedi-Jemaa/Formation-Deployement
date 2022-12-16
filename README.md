@@ -4,7 +4,7 @@
 
 > Steps to deploy a Node.js app to Azure using PM2, NGINX as a reverse proxy and an SSL from LetsEncrypt
 
-## 1. Sign up for Azure postal
+## 1. Sign up for Azure portal
 
 ## 2. Create a new virtual machine and log in via ssh
 Exple : Open your cmd ant type : ssh Machine_Name@Public-IP-address
