@@ -14,7 +14,7 @@ Exple : Open your cmd and type : ssh Your_Machine_Name@Public-IP-address
 ```
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 
-sudo apt install nodejs
+sudo apt-get install -y nodejs
 
 node --version
 ```
