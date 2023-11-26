@@ -12,7 +12,7 @@ Exple : Open your cmd and type : ssh Your_Machine_Name@Public-IP-address
 
 ## 3. Install Node/NPM
 ```
-sudo apt-get update && sudo apt-get install yarn
+sudo apt-get update && sudo apt upgrade -y && sudo apt-get install yarn
 
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 
@@ -68,11 +68,15 @@ sudo ufw allow https (Port 443)
 ```
 sudo apt-get update && sudo apt-get install -y nginx
 
+sudo systemctl enable ngnix
+
+sudo systemctl status ngnix   (To verify that ngnix is active (running))
+
 sudo nano /etc/nginx/sites-available/default
 ```
 Add the following to the location part of the server block
 ```
-    server_name yourdomain.com www.yourdomain.com;
+    server_name "your-Public-IP-Adress"  or  "yourdomain.com"  or  "www.yourdomain.com" ;
 
     location / {
         proxy_pass http://localhost:5000; #whatever port your app runs on
@@ -82,6 +86,7 @@ Add the following to the location part of the server block
         proxy_set_header Host $host;
         proxy_cache_bypass $http_upgrade;
     }
+
 ```
 ```
 # Check NGINX config
