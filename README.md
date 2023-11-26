@@ -67,8 +67,6 @@ sudo ufw allow https (Port 443)
 ```
 sudo apt-get update && sudo apt-get install nginx -y
 
-sudo systemctl enable ngnix
-
 sudo systemctl status ngnix   (To verify that ngnix is active (running))
 
 sudo nano /etc/nginx/sites-available/default
