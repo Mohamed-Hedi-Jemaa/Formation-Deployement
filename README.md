@@ -75,14 +75,17 @@ Add the following to the location part of the server block
 ```
     server_name "your-Public-IP-Adress"  or  "yourdomain.com"  or  "www.yourdomain.com" ;
 
-    location / {
-        proxy_pass http://localhost:5000; #whatever port your app runs on
-        proxy_http_version 1.1;
-        proxy_set_header Upgrade $http_upgrade;
-        proxy_set_header Connection 'upgrade';
-        proxy_set_header Host $host;
-        proxy_cache_bypass $http_upgrade;
-    }
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+                proxy_pass http://localhost:3000; #whatever port your app runs on
+                proxy_http_version 1.1;
+                proxy_set_header Upgrade $http_upgrade;
+                proxy_set_header Connection 'upgrade';
+                proxy_set_header Host $host;
+                proxy_cache_bypass $http_upgrade;
+        }
 
 ```
 ```
