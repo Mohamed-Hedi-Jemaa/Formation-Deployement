@@ -65,7 +65,7 @@ sudo ufw allow https (Port 443)
 
 ## 8. Install NGINX and configure
 ```
-sudo apt-get update && sudo apt-get install -y nginx
+sudo apt-get update && sudo apt-get install nginx -y
 
 sudo systemctl enable ngnix
 
