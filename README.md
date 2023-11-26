@@ -12,8 +12,7 @@ Exple : Open your cmd and type : ssh Your_Machine_Name@Public-IP-address
 
 ## 3. Install Node/NPM
 ```
-sudo apt-get update && sudo apt upgrade -y && sudo apt-get install yarn
-
+sudo apt-get update && sudo apt upgrade -y
 curl -sL https://deb.nodesource.com/setup_16.x | sudo -E bash -
 
 sudo apt-get install -y nodejs
