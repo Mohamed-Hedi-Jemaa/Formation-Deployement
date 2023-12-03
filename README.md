@@ -66,13 +66,69 @@ sudo ufw allow https (Port 443)
 ## 8. Install NGINX and configure
 ```
 sudo apt-get update && sudo apt-get install nginx -y
+```
+### To verify that ngnix is active (running)
+```
+sudo systemctl status ngnix  
+```
+### Create New Ngnix File Config 
+```
+cd /etc/nginx/sites-available/
+```
+### Change "yourNewConfigFileName" with your prefer Name
+```
+sudo nono yourNewConfigFileName
+```
+Add the following to new file 
+### * Make Sure to change the root path with your build folder related to your Application
+### * Same thing for "server_name" with your public IP_Adresss of your Azure Instance(VM)
+```
+server {
+        listen 80;
+        listen [::]:80;
 
-sudo systemctl status ngnix   (To verify that ngnix is active (running))
+        root /home/ubuntu/my-app/build;
 
-sudo nano /etc/nginx/sites-available/default
+        # Add index.php to the list if you are using PHP
+        index index.html index.htm index.nginx-debian.html;
+
+        server_name 172.206.253.48;
+
+        location / {
+                # First attempt to serve request as file, then
+                # as directory, then fall back to displaying a 404.
+                try_files $uri $uri/ =404;
+#               add_header 'Access-Control-Allow-Origin: $http_origin';
+#               add_header 'Access-Control-Allow-Origin: GET, POST, DELETE, PUT, PATCH, OPTIONS';
+
+        }
+
+}
+```
+# Check NGINX config
+```
+sudo nginx -t
+```
+# Restart NGINX
+```
+sudo service nginx restart
+```
+* Return to the your root diacertory ~/
+```
+cd
+```
+### * Now we need to create the index.html of our front-App so enter to your application Folder and run :
+```
+npm run build       =====>(after runinng this command line a new folder created titled build)
+```
+
+
+***********************************************************************************************
+### * !!!! This is another config for anthoer purpose don't execute it !!!  
 ```
 Add the following to the location part of the server block
-```
+
+
     server_name "your-Public-IP-Adress"  or  "yourdomain.com"  or  "www.yourdomain.com" ;
 
         location / {
@@ -88,13 +144,8 @@ Add the following to the location part of the server block
         }
 
 ```
-```
-# Check NGINX config
-sudo nginx -t
+*************************************************************************************************
 
-# Restart NGINX
-sudo service nginx restart
-```
 
 ### You should now be able to visit your IP with no port (port 80) and see your app. Now let's add a domain
 
